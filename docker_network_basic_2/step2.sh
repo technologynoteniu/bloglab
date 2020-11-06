@@ -2,4 +2,4 @@
 
 sudo brctl addbr hwchiu0
 sudo brctl show
-sudo ifconfig hwchiu0
+sudo ifconfig hwchiu0 up
