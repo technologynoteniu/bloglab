@@ -17,4 +17,8 @@ sudo ifconfig veth0 up
 
 sudo docker exec c1 ifconfig eth0 10.55.66.2 netmask 255.255.255.0 up
 
-
+sudo ifconfig hwchiu0 10.55.66.1 netmask 255.255.255.0
+sudo docker exec -it c1 ip route add default via 10.55.66.1
+sudo iptables -t nat -I POSTROUTING -s 10.55.66.2/32 -o eth0 -j MASQUERADE
+sudo iptables -t filter -I FORWARD -i hwchiu0 -o eth0 -j ACCEPT
+sudo iptables -t filter -I FORWARD -i eth0 -o hwchiu0 -j ACCEPT
