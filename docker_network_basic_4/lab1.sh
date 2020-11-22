@@ -22,3 +22,5 @@ sudo docker exec -it c1 ip route add default via 10.55.66.1
 sudo iptables -t nat -I POSTROUTING -s 10.55.66.2/32 -o eth0 -j MASQUERADE
 sudo iptables -t filter -I FORWARD -i hwchiu0 -o eth0 -j ACCEPT
 sudo iptables -t filter -I FORWARD -i eth0 -o hwchiu0 -j ACCEPT
+sudo iptables -t filter -I FORWARD -i hwchiu0 -o eth1 -j ACCEPT
+sudo iptables -t filter -I FORWARD -i eth1 -o hwchiu0 -j ACCEPT
